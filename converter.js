@@ -1,15 +1,11 @@
 function convertToBinary(num) {
-  let arr = [];
+  let result = '';
 
   for (let i = num; i > 0; i = Math.floor(i / 2)){
-    arr.push(i % 2);
+    result += i % 2;
   }
 
-  let result = '';
-  for (let j = arr.length - 1; j >= 0; j--) {
-    result += arr[j];
-  }
-  return result;
+  return result.split("").reverse().join("");
 }
 
 function convertToHexa(num) {
@@ -18,25 +14,20 @@ function convertToHexa(num) {
     num += 0xFFFFFFFF + 1;
   }
 
-  let arr = [];
+  let result = '';
   let vals = ["A", "B", "C", "D", "E", "F"];
 
   for (let i = num; i > 0; i = Math.floor(i / 16)){
     if(i % 16 >= 10) {
-      arr.push(vals[i % 16 - 10]);
+      result += vals[i % 16 - 10];
     }else {
-      arr.push(i % 16);
+      result += i % 16;
     }
   }
-
-  let result = '';
-  for (let j = arr.length - 1; j >= 0; j--) {
-    result += arr[j];
-  }
-  return result;
+  return result.split("").reverse().join("");
 }
 
 module.exports = {
   convertToHexa,
   convertToBinary
-}
+};
